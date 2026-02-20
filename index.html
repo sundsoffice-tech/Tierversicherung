@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bello absichern ab 13€/Monat | Tierkrankenversicherung</title>
+    <meta name="description" content="Schütze deinen Hund vor hohen Tierarztkosten. Tierkrankenversicherung ab 13€/Monat. Kostenlose Beratung in 2 Minuten.">
+    <meta name="robots" content="index, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Meta Pixel (auskommentiert – eigene ID einfügen) -->
+    <!--
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'DEINE_PIXEL_ID');
+    fbq('track', 'PageView');
+    </script>
+    -->
+</head>
+<body>
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-content">
+            <p>Wir verwenden Cookies, um dir die bestmögliche Erfahrung zu bieten. <a href="datenschutz.html">Mehr erfahren</a></p>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Akzeptieren</button>
+                <button class="cookie-btn cookie-decline" onclick="declineCookies()">Nur notwendige</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="top-bar-trust">
+                <span class="pulse-dot"></span>
+                <span>Heute bereits <strong id="consultCount">312</strong> Beratungen angefragt</span>
+            </div>
+            <div class="top-bar-rating">
+                <span class="stars">★★★★★</span> 4,9/5 bei über 2.800 Bewertungen
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg-elements">
+            <div class="hero-circle hero-circle-1"></div>
+            <div class="hero-circle hero-circle-2"></div>
+            <div class="hero-circle hero-circle-3"></div>
+        </div>
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-icon">🛡️</span>
+                    <span>Testsieger 2025 – Stiftung Warentest</span>
+                </div>
+                <h1>Wenn Bello krank wird,<br><span class="hero-highlight">zählt jede Sekunde.</span><br>Nicht dein Kontostand.</h1>
+                <p class="hero-sub">Eine einzige OP kann dich <strong>3.500€</strong> kosten. Sichere deinen Liebling ab – <em>ab nur 13€ im Monat.</em></p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">34 Mio.</span>
+                        <span class="stat-label">Haustiere in DE</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">87%</span>
+                        <span class="stat-label">ohne Schutz</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">ab 13€</span>
+                        <span class="stat-label">pro Monat</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-form-wrapper">
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <span class="form-icon">🐾</span>
+                        <h2>Kostenlose Beratung</h2>
+                        <p>In 30 Sekunden – unverbindlich & DSGVO-konform</p>
+                    </div>
+                    <form id="heroForm" class="lead-form" novalidate>
+                        <div class="form-group">
+                            <label for="petName">Wie heißt dein Liebling?</label>
+                            <input type="text" id="petName" name="petName" placeholder="z.B. Bello, Luna, Max..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="petType">Was für ein Tier?</label>
+                            <div class="pet-type-select">
+                                <button type="button" class="pet-btn active" data-type="Hund">
+                                    <span class="pet-emoji">🐕</span>
+                                    <span>Hund</span>
+                                </button>
+                                <button type="button" class="pet-btn" data-type="Katze">
+                                    <span class="pet-emoji">🐈</span>
+                                    <span>Katze</span>
+                                </button>
+                            </div>
+                            <input type="hidden" id="petType" name="petType" value="Hund">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Deine Telefonnummer</label>
+                            <input type="tel" id="phone" name="phone" placeholder="0170 1234567" required>
+                        </div>
+                        <button type="submit" class="cta-button" id="heroSubmitBtn">
+                            <span class="cta-text">Jetzt kostenlos beraten lassen</span>
+                            <span class="cta-arrow">→</span>
+                        </button>
+                        <div class="form-consent">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="consent" name="consent" required>
+                                <span class="checkmark"></span>
+                                <span class="consent-text">Ich stimme der <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> zu und möchte kontaktiert werden.</span>
+                            </label>
+                        </div>
+                        <p class="form-note">🔒 Deine Daten sind sicher. Kein Spam. Jederzeit widerrufbar.</p>
+                    </form>
+                    <div class="form-success" id="formSuccess" style="display:none;">
+                        <div class="success-icon">✓</div>
+                        <h3>Perfekt!</h3>
+                        <p>Wir melden uns innerhalb von 24 Stunden bei dir – für <span id="successPetName">deinen Liebling</span>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <span>Warum du handeln solltest</span>
+            <div class="scroll-arrow">↓</div>
+        </div>
+    </section>
+
+    <!-- Schock-Sektion: Tierarztkosten -->
+    <section class="costs-section" id="kosten">
+        <div class="container">
+            <div class="section-intro">
+                <span class="section-tag">💸 Die bittere Realität</span>
+                <h2>Was passiert, wenn dein Hund<br><span class="text-danger">plötzlich operiert werden muss?</span></h2>
+                <p class="section-desc">Die neue Gebührenordnung für Tierärzte (GOT) hat die Kosten seit 2022 massiv erhöht. Eine einzige Notfall-OP kann deine Ersparnisse auffressen.</p>
+            </div>
+            <div class="cost-cards">
+                <div class="cost-card" data-aos>
+                    <div class="cost-card-icon">🦴</div>
+                    <h3>Kreuzbandriss</h3>
+                    <p class="cost-description">Häufigste OP bei Hunden – ein falscher Sprung reicht</p>
+                    <div class="cost-bar">
+                        <div class="cost-bar-fill" data-width="88"></div>
+                    </div>
+                    <div class="cost-numbers">
+                        <div class="cost-amount">
+                            <span class="cost-label">OP-Kosten</span>
+                            <span class="cost-value">2.000 – 4.000€</span>
+                        </div>
+                        <div class="cost-insurance">
+                            <span class="cost-label">Dein Anteil mit Versicherung</span>
+                            <span class="cost-value cost-green">ab 0€</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cost-card cost-card-featured" data-aos>
+                    <div class="cost-card-badge">⚠️ NOTFALL</div>
+                    <div class="cost-card-icon">🚨</div>
+                    <h3>Magendrehung</h3>
+                    <p class="cost-description">Lebensbedrohlich – jede Minute zählt, Notfall-OP sofort</p>
+                    <div class="cost-bar">
+                        <div class="cost-bar-fill" data-width="75"></div>
+                    </div>
+                    <div class="cost-numbers">
+                        <div class="cost-amount">
+                            <span class="cost-label">OP-Kosten</span>
+                            <span class="cost-value">1.500 – 3.500€</span>
+                        </div>
+                        <div class="cost-insurance">
+                            <span class="cost-label">Dein Anteil mit Versicherung</span>
+                            <span class="cost-value cost-green">ab 0€</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cost-card" data-aos>
+                    <div class="cost-card-icon">🔬</div>
+                    <h3>Tumor-Entfernung</h3>
+                    <p class="cost-description">Besonders bei älteren Hunden – frühzeitig handeln rettet Leben</p>
+                    <div class="cost-bar">
+                        <div class="cost-bar-fill" data-width="65"></div>
+                    </div>
+                    <div class="cost-numbers">
+                        <div class="cost-amount">
+                            <span class="cost-label">OP-Kosten</span>
+                            <span class="cost-value">600 – 3.000€</span>
+                        </div>
+                        <div class="cost-insurance">
+                            <span class="cost-label">Dein Anteil mit Versicherung</span>
+                            <span class="cost-value cost-green">ab 0€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="costs-bottom">
+                <p class="costs-callout">Die durchschnittlichen Tierarztkosten pro Hund liegen bei <strong>1.000 – 1.500€ pro Jahr</strong>. Mit Versicherung ab 13€/Monat bist du auf der sicheren Seite.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emotional Story Section -->
+    <section class="story-section">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-visual">
+                    <div class="story-image-placeholder">
+                        <div class="story-emoji">🐕‍🦺</div>
+                        <div class="story-image-overlay">
+                            <span class="story-quote">"Er ist nicht nur ein Hund.<br>Er ist Familie."</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="story-content">
+                    <span class="section-tag">❤️ Warum handeln?</span>
+                    <h2>Stell dir vor, es passiert <em>morgen.</em></h2>
+                    <p class="story-text">Du kommst nach Hause. Bello liegt im Körbchen und jault leise. Er kann nicht aufstehen. Dein Herz rast. In der Tierklinik die Diagnose: Kreuzbandriss. Sofort-OP nötig.</p>
+                    <p class="story-text">Der Tierarzt sagt: <strong>"Das wird zwischen 2.500 und 3.500 Euro kosten."</strong></p>
+                    <p class="story-text story-text-highlight">In diesem Moment willst du nur eins: Dass es Bello gut geht. Nicht über Geld nachdenken müssen.</p>
+                    <div class="story-comparison">
+                        <div class="comparison-item comparison-without">
+                            <span class="comparison-icon">❌</span>
+                            <span class="comparison-label">Ohne Versicherung</span>
+                            <span class="comparison-value">3.500€ aus eigener Tasche</span>
+                        </div>
+                        <div class="comparison-item comparison-with">
+                            <span class="comparison-icon">✅</span>
+                            <span class="comparison-label">Mit Versicherung</span>
+                            <span class="comparison-value">0€ – Versicherung übernimmt</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section" id="leistungen">
+        <div class="container">
+            <div class="section-intro">
+                <span class="section-tag">✨ Dein Rundum-Schutz</span>
+                <h2>Alles abgedeckt –<br><span class="text-accent">damit du ruhig schlafen kannst</span></h2>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card" data-aos>
+                    <div class="benefit-icon">🏥</div>
+                    <h3>OP-Schutz</h3>
+                    <p>Kreuzbandriss, Magendrehung, Tumore – alle chirurgischen Eingriffe sind abgedeckt. Inkl. Narkose & Nachsorge.</p>
+                </div>
+                <div class="benefit-card" data-aos>
+                    <div class="benefit-icon">💊</div>
+                    <h3>Behandlungen</h3>
+                    <p>Allergien, Infektionen, Ohrenentzündungen – auch ambulante Behandlungen und Medikamente werden erstattet.</p>
+                </div>
+                <div class="benefit-card" data-aos>
+                    <div class="benefit-icon">🦷</div>
+                    <h3>Zahnbehandlungen</h3>
+                    <p>Zahnextraktionen, Zahnsteinentfernung und Zahnsanierungen – Zahngesundheit inklusive.</p>
+                </div>
+                <div class="benefit-card" data-aos>
+                    <div class="benefit-icon">🌿</div>
+                    <h3>Naturheilkunde</h3>
+                    <p>Physiotherapie, Homöopathie, Akupunktur – auch alternative Heilmethoden sind je nach Tarif abgedeckt.</p>
+                </div>
+                <div class="benefit-card" data-aos>
+                    <div class="benefit-icon">🌍</div>
+                    <h3>Auslandsschutz</h3>
+                    <p>Im Urlaub passiert was? Kein Problem – dein Hund ist auch im Ausland geschützt.</p>
+                </div>
+                <div class="benefit-card" data-aos>
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Freie Arztwahl</h3>
+                    <p>Geh zu dem Tierarzt, dem du vertraust. Keine Einschränkungen bei der Wahl deiner Praxis oder Klinik.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- So funktioniert's -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-intro">
+                <span class="section-tag">🚀 In 3 Schritten geschützt</span>
+                <h2>So einfach sicherst du<br><span class="text-accent">deinen Liebling ab</span></h2>
+            </div>
+            <div class="process-steps">
+                <div class="process-step" data-aos>
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Formular ausfüllen</h3>
+                        <p>Name, Tierart und Telefonnummer – mehr brauchen wir nicht. Dauert 30 Sekunden.</p>
+                    </div>
+                </div>
+                <div class="process-connector"></div>
+                <div class="process-step" data-aos>
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Persönliche Beratung</h3>
+                        <p>Wir rufen dich an und finden gemeinsam den perfekten Tarif für deinen Vierbeiner.</p>
+                    </div>
+                </div>
+                <div class="process-connector"></div>
+                <div class="process-step" data-aos>
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Bello ist geschützt</h3>
+                        <p>Sofort-Schutz bei Unfällen. Kompletter Schutz nach kurzer Wartezeit. Fertig!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section" id="erfahrungen">
+        <div class="container">
+            <div class="section-intro">
+                <span class="section-tag">💬 Echte Geschichten</span>
+                <h2>Was andere Tierbesitzer sagen</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-aos>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Unser Labrador Bruno hatte einen Kreuzbandriss. OP-Kosten: 3.200€. Die Versicherung hat alles übernommen. Ohne sie hätten wir ein echtes Problem gehabt."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SH</div>
+                        <div class="author-info">
+                            <strong>Sandra H.</strong>
+                            <span>Bruno (Labrador, 6 Jahre)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Meine Katze Mimi musste nachts notoperiert werden – Magendrehung. 2.800€ Rechnung. Dank der Versicherung hab ich keinen Cent bezahlt. Beste Entscheidung ever!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">TK</div>
+                        <div class="author-info">
+                            <strong>Thomas K.</strong>
+                            <span>Mimi (Katze, 4 Jahre)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos>
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Für 19€ im Monat hab ich Vollschutz für meinen Golden Retriever. Die Beratung war super – ehrlich, schnell und ohne Druck. Kann ich nur empfehlen."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div class="author-info">
+                            <strong>Michael R.</strong>
+                            <span>Charlie (Golden Retriever, 2 Jahre)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-intro">
+                <span class="section-tag">❓ Häufige Fragen</span>
+                <h2>Alles, was du wissen musst</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Was kostet die Tierkrankenversicherung?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Die Kosten hängen von Tierart, Rasse, Alter und gewähltem Tarif ab. OP-Versicherungen starten ab ca. 13€/Monat, Vollschutz-Tarife ab ca. 28€/Monat. In unserer kostenlosen Beratung finden wir den optimalen Tarif für dich.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Gibt es eine Wartezeit?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Die meisten Tarife haben eine Wartezeit von 30 Tagen bei Krankheiten und nur 2 Tage bei Unfällen. Bei einigen Anbietern gibt es sogar Tarife ohne Wartezeit. Wir beraten dich, welcher Tarif am besten passt.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Werden Vorerkrankungen mitversichert?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Bestehende Vorerkrankungen sind in der Regel nicht versicherbar. Deshalb gilt: Je früher du abschließt, desto besser. Bei einem gesunden, jungen Tier hast du den besten Schutz zum besten Preis.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Kann ich den Tierarzt frei wählen?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Ja! Bei allen von uns vermittelten Tarifen hast du freie Tierarztwahl – ob Tierarztpraxis, Tierklinik oder Notdienst. Auch Spezialisten und Tierkliniken sind abgedeckt.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Was passiert mit meinen Daten?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Deine Daten werden ausschließlich für die Versicherungsberatung verwendet und DSGVO-konform verarbeitet. Kein Verkauf an Dritte, kein Spam. Du kannst deine Einwilligung jederzeit widerrufen.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Bis zu welchem Alter kann ich meinen Hund versichern?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Das Höchstaufnahmealter liegt je nach Anbieter bei 7–8 Jahren. Einmal versichert, bleibt dein Tier bis zum Lebensende geschützt. Je jünger du abschließt, desto günstiger und umfassender der Schutz.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="cta-card">
+                <div class="cta-card-content">
+                    <h2>Dein Hund verdient den<br><span class="text-accent">besten Schutz.</span></h2>
+                    <p>Warte nicht, bis es zu spät ist. Eine OP kommt immer unerwartet – und kostet im Schnitt 2.500€. Lass dich jetzt kostenlos beraten.</p>
+                    <div class="cta-price-badge">
+                        <span class="price-from">Vollschutz ab</span>
+                        <span class="price-amount">13€<small>/Monat</small></span>
+                    </div>
+                    <a href="#heroForm" class="cta-button cta-button-large">
+                        <span class="cta-text">Jetzt Bello absichern</span>
+                        <span class="cta-arrow">→</span>
+                    </a>
+                    <p class="cta-micro">Kostenlos • Unverbindlich • In 30 Sekunden</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="footer-logo">🐾 BelloSchutz</span>
+                    <p>Wir helfen Tierbesitzern, den besten Versicherungsschutz für ihre Lieblinge zu finden – persönlich, ehrlich und unverbindlich.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Rechtliches</h4>
+                    <a href="impressum.html">Impressum</a>
+                    <a href="datenschutz.html">Datenschutzerklärung</a>
+                    <a href="agb.html">AGB</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Kontakt</h4>
+                    <a href="tel:+4921234567890">02123 / 456 7890</a>
+                    <a href="mailto:info@belloschutz.de">info@belloschutz.de</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 BelloSchutz – Ein Service von S&S Messebau GbR | Alle Rechte vorbehalten</p>
+                <p class="footer-disclaimer">Wir sind Versicherungsvermittler gem. §34d GewO. Keine Anlage- oder Rechtsberatung. Die dargestellten Kosten sind Durchschnittswerte und können je nach Tarif, Anbieter und individuellem Fall abweichen.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Mobile CTA -->
+    <div class="floating-cta" id="floatingCta">
+        <a href="#heroForm" class="floating-cta-btn">
+            <span>🐾</span> Jetzt Bello absichern – ab 13€
+        </a>
+    </div>
+
+    <!-- Social Proof Popup -->
+    <div class="social-proof-popup" id="socialProof">
+        <div class="proof-content">
+            <span class="proof-avatar">🐕</span>
+            <div class="proof-text">
+                <strong id="proofName">Lisa aus München</strong>
+                <span id="proofAction">hat gerade eine Beratung angefragt</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
